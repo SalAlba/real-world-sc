@@ -39,11 +39,10 @@
     "lodash.merge": "4.6.2",
     "lodash.omit": "4.5.0",
     "lodash.range": "3.2.0",
-    "lodash.set": "4.3.2",
     "lodash.take": "4.1.1",
     "pg": "8.9.0",
     "slug": "8.2.2",
-    "uuid": "9.0.0",
+    "uuid": "9.0.1",
     "zod": "3.22.4"
   }
 }
