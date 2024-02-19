@@ -4,9 +4,9 @@ import {NotFoundError} from "./NotFoundError";
 import merge from "lodash.merge";
 import {incrementIdGenerator} from "./incrementIdGenerator";
 import {Router} from "express";
-import {Article} from "./article";
 import {inMemoryArticleRepository} from "./inMemoryArticleRepository";
 import {createArticle} from "./createArticle";
+import {clock} from "./clock";
 
 const articleIdGenerator = incrementIdGenerator(String);
 // application scope
@@ -19,7 +19,7 @@ articlesRouter.post("/api/articles", async (req, res, next) => {
     const input = req.body.article;
 
     // TS
-    const article = await createArticle(articleRepository, articleIdGenerator)(input);
+    const article = await createArticle(articleRepository, articleIdGenerator, clock)(input);
 
     // HTTP
     res.json({ article: omit(article, "id") });

@@ -7,7 +7,9 @@ describe("Create article", function () {
     it("happy path", async function () {
         const articleRepository = inMemoryArticleRepository();
         const idGenerator = () => "articleId";
-        const create = createArticle(articleRepository, idGenerator);
+        const DATE = new Date(2010, 10, 10);
+        const clock = () => DATE;
+        const create = createArticle(articleRepository, idGenerator, clock);
 
         const article = await create(
             {
@@ -21,13 +23,15 @@ describe("Create article", function () {
         const fetchedArticle = await articleRepository.findBySlug(article.slug);
 
         // state verification, not interaction verification
-        assert.deepStrictEqual(omit(fetchedArticle, 'createdAt', 'updatedAt'), {
+        assert.deepStrictEqual(fetchedArticle, {
             body: "body",
             description: "",
             id: "articleId",
             slug: "the-title",
             tagList: ["tag1", "tag2"],
             title: "The title",
+            createdAt: DATE,
+            updatedAt: DATE,
         });
     });
 

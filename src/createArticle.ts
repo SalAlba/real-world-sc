@@ -2,6 +2,7 @@ import {inMemoryArticleRepository} from "./inMemoryArticleRepository";
 import {IdGenerator} from "./idGenerator";
 import {Article} from "./article";
 import makeSlug from "slug";
+import {Clock} from "./clock";
 
 export type ArticleInput = {
     body: string;
@@ -14,10 +15,11 @@ export type ArticleInput = {
 export const createArticle =
     (
         articleRepository: ReturnType<typeof inMemoryArticleRepository>,
-        articleIdGenerator: IdGenerator
+        articleIdGenerator: IdGenerator,
+        clock: Clock
     ) =>
         async (input: ArticleInput) => {
-            const now = new Date();
+            const now = clock();
             const article: Article = {
                 body: input.body,
                 description: input.description,
@@ -31,3 +33,4 @@ export const createArticle =
             await articleRepository.create(article);
             return article;
         };
+
