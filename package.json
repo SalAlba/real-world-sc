@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "ts-node src/server.ts",
-    "test": "mocha --exit 'src/**/*.test.ts'",
+    "test": "mocha --exit 'src/**/*.test.ts' --watch",
     "format": "prettier --write src/**"
   },
   "devDependencies": {

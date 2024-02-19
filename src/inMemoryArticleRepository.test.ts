@@ -23,7 +23,7 @@ describe('In memory article repository', function () {
         assert.deepStrictEqual(result, article);
     });
 
-    it.skip('should update articles', async function () {
+    it('should update articles', async function () {
         const article: Article = {
             id: "id",
             slug: "the-title",
@@ -44,7 +44,7 @@ describe('In memory article repository', function () {
         assert.deepStrictEqual(result!.body, 'updated body');
     });
 
-    it.skip('should return null when article not found', async function () {
+    it('should return null when article not found', async function () {
         const repository = inMemoryArticleRepository();
 
         const result = await repository.findBySlug("the-title");
