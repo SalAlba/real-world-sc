@@ -1,11 +1,6 @@
 import { Article, ArticleId, Slug } from "./article";
 
 
-// ReturnType<typeof inMemoryArticleRepository>
-
-
-type X = ReturnType<typeof  inMemoryArticleRepository>;
-
 export const inMemoryArticleRepository = () => {
     const articles: Record<ArticleId, Article> = {};
 
