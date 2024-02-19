@@ -8,14 +8,16 @@ import {Article} from "./article";
 import {inMemoryArticleRepository} from "./inMemoryArticleRepository";
 
 const articleIdGenerator = incrementIdGenerator(String);
+// application scope
 const articleRepository = inMemoryArticleRepository();
-// const articles: Record<string, Article> = {};
 
 export const articlesRouter = Router();
 
 articlesRouter.post("/api/articles", async (req, res, next) => {
+    // HTTP
     const input = req.body.article;
 
+    // TS
     const now = new Date();
     const article: Article = {
         body: input.body,
@@ -29,6 +31,7 @@ articlesRouter.post("/api/articles", async (req, res, next) => {
     };
     await articleRepository.create(article);
 
+    // HTTP
     res.json({ article: omit(article, "id") });
 });
 

@@ -1,9 +1,13 @@
 import { Article, ArticleId, Slug } from "./article";
 
+
+// ReturnType<typeof inMemoryArticleRepository>
+
+
+type X = ReturnType<typeof  inMemoryArticleRepository>;
+
 export const inMemoryArticleRepository = () => {
     const articles: Record<ArticleId, Article> = {};
-    // const articles: {[key: ArticleId]: Article} = {};
-    // const articles: Array<Article> = [];
 
     return {
         async create(article: Article): Promise<void> {
