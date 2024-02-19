@@ -7,6 +7,7 @@ import {Router} from "express";
 import {inMemoryArticleRepository} from "./inMemoryArticleRepository";
 import {createArticle} from "./createArticle";
 import {clock} from "./clock";
+import {ArticleInput} from "./parseArticleInput";
 
 const articleIdGenerator = incrementIdGenerator(String);
 // application scope
@@ -16,7 +17,7 @@ export const articlesRouter = Router();
 
 articlesRouter.post("/api/articles", async (req, res, next) => {
     // HTTP
-    const input = req.body.article;
+    const input = ArticleInput.parse(req.body.article);
 
     // TS
     const article = await createArticle(articleRepository, articleIdGenerator, clock)(input);
