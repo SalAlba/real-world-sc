@@ -7,6 +7,8 @@ export type Slug = string;
 // const Slug = (slug: string) => slug as Slug;
 // const x: Slug = Slug("abc");
 
+// domain
+
 export type Article = {
     body: string;
     description: string;
@@ -23,6 +25,8 @@ export type ArticleRepository = {
     update(article: Article): Promise<void>;
     findBySlug(slug: Slug): Promise<Article | null>;
 };
+
+// common closure principle
 
 
 

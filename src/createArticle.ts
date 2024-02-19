@@ -10,7 +10,6 @@ export type ArticleInput = {
     title: string;
 };
 
-
 // use case/workflow/application service/application logic
 export const createArticle =
     (
