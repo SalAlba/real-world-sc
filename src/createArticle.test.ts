@@ -20,6 +20,7 @@ describe("Create article", function () {
 
         const fetchedArticle = await articleRepository.findBySlug(article.slug);
 
+        // state verification, not interaction verification
         assert.deepStrictEqual(omit(fetchedArticle, 'createdAt', 'updatedAt'), {
             body: "body",
             description: "",
