@@ -1,6 +1,6 @@
 import {inMemoryArticleRepository} from "./inMemoryArticleRepository";
 import {IdGenerator} from "./idGenerator";
-import {Article} from "./article";
+import {Article, ArticleRepository} from "./article";
 import makeSlug from "slug";
 import {Clock} from "./clock";
 import {ArticleInput} from "./parseArticleInput";
@@ -8,7 +8,7 @@ import {ArticleInput} from "./parseArticleInput";
 // use case/workflow/application service/application logic
 export const createArticle =
     (
-        articleRepository: ReturnType<typeof inMemoryArticleRepository>,
+        articleRepository: ArticleRepository,
         articleIdGenerator: IdGenerator,
         clock: Clock
     ) =>
