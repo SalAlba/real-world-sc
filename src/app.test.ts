@@ -1,5 +1,5 @@
 import httpClient from "supertest";
-import { app, createApp } from "./app";
+import { createApp } from "./app";
 import assert from "assert";
 import omit from "lodash.omit";
 import { config } from "./config";
