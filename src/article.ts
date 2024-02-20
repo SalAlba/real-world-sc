@@ -25,8 +25,3 @@ export type ArticleRepository = {
     update(article: Article): Promise<void>;
     findBySlug(slug: Slug): Promise<Article | null>;
 };
-
-// common closure principle
-
-
-
