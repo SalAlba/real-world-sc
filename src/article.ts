@@ -24,4 +24,5 @@ export type ArticleRepository = {
   create(article: Article): Promise<void>;
   update(article: Article): Promise<void>;
   findBySlug(slug: Slug): Promise<Article | null>;
+  deleteAll(): Promise<void>;
 };
