@@ -9,10 +9,13 @@ import { createArticle } from "./createArticle";
 import { clock } from "./clock";
 import { ArticleInput, UpdateArticleInput } from "./parseArticleInput";
 import { updateArticle } from "./updateArticle";
+import { sqlArticleRepository } from "./sqlArticleRepository";
+import { createDb } from "./db";
 
 const articleIdGenerator = incrementIdGenerator(String);
-// application scope
-const articleRepository = inMemoryArticleRepository();
+const articleRepository = process.env.DATABASE_URL
+  ? sqlArticleRepository(createDb(process.env.DATABASE_URL))
+  : inMemoryArticleRepository();
 
 export const articlesRouter = Router();
 
