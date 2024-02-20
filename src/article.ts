@@ -10,18 +10,18 @@ export type Slug = string;
 // domain
 
 export type Article = {
-    body: string;
-    description: string;
-    tagList: Array<Tag>;
-    title: string;
-    slug: Slug;
-    id: ArticleId;
-    createdAt: Date;
-    updatedAt: Date;
+  body: string;
+  description: string;
+  tagList: Array<Tag>;
+  title: string;
+  slug: Slug;
+  id: ArticleId;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export type ArticleRepository = {
-    create(article: Article): Promise<void>;
-    update(article: Article): Promise<void>;
-    findBySlug(slug: Slug): Promise<Article | null>;
+  create(article: Article): Promise<void>;
+  update(article: Article): Promise<void>;
+  findBySlug(slug: Slug): Promise<Article | null>;
 };

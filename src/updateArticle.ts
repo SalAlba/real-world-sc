@@ -6,18 +6,18 @@ import merge from "lodash.merge";
 import { UpdateArticleInput } from "./parseArticleInput";
 
 export const updateArticle =
-    (articleRepository: ArticleRepository, clock: Clock) =>
-        async (slug: Slug, articleInput: UpdateArticleInput) => {
-            const existingArticle = await articleRepository.findBySlug(slug);
-            if (!existingArticle) {
-                throw new NotFoundError(`Article with slug ${slug} does not exist`);
-            }
-            const article = merge(existingArticle, articleInput);
-            const now = clock();
-            article.updatedAt = now;
-            article.slug = makeSlug(article.title);
+  (articleRepository: ArticleRepository, clock: Clock) =>
+  async (slug: Slug, articleInput: UpdateArticleInput) => {
+    const existingArticle = await articleRepository.findBySlug(slug);
+    if (!existingArticle) {
+      throw new NotFoundError(`Article with slug ${slug} does not exist`);
+    }
+    const article = merge(existingArticle, articleInput);
+    const now = clock();
+    article.updatedAt = now;
+    article.slug = makeSlug(article.title);
 
-            await articleRepository.update(article);
+    await articleRepository.update(article);
 
-            return article;
-        };
+    return article;
+  };

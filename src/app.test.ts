@@ -85,13 +85,13 @@ describe("Conduit", function () {
       }
     );
 
-      const failedArticle = await createArticle(
-          request,
-          // @ts-ignore
-          {
-              title: "",
-          },
-          422
-      );
+    const failedArticle = await createArticle(
+      request,
+      // @ts-ignore
+      {
+        title: "",
+      },
+      422
+    );
   });
 });
